@@ -1,0 +1,21 @@
+.DS_Store
+c2c_gateway_vue/node_modules/
+c2c_titan_pay_vue/node_modules/
+c2c_xposed_vue/node_modules/
+c2c_gateway_vue/dist/
+c2c_titan_pay_vue/dist/
+c2c_xposed_vue/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+c2c_gateway_vue/package-lock.json
+c2c_titan_pay_vue/package-lock.json
+c2c_xposed_vue/package-lock.json
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
