@@ -16,6 +16,9 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="机器人Id">
+        <el-input v-model="queryParams.robot_no__contains" size="mini" placeholder="机器人Id"></el-input>
+      </el-form-item>
       <el-form-item label="账号状态">
         <el-select v-model="queryParams.is_ban" size="mini" clearable style="width:180px" placeholder="全部" :loading="selectLoading">
           <el-option v-for="(value, key) in statusMap" :key="key" :label="value" :value="key">
