@@ -211,7 +211,7 @@ export default {
             createVisible: false,
             channelMap:{'0':'自有渠道', '1': '第三方渠道'},
             payWayMap: {'1':'支付宝', '2': '微信', '3':'银行卡', '4': '云闪付'},
-            statusMap:{'0':'启用', '1': '禁用'},
+            statusMap:{'0':'启用', '1': '禁用', '2': '已达限额'},
             titleMap: {'create': '添加账户', 'update': '修改账户'},
             rules: {
                 res_name:[
