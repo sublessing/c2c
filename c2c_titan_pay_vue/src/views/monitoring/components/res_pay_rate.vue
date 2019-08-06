@@ -13,7 +13,7 @@
         <el-button type="primary" @click="handleFilter">搜 索</el-button>
       </el-form-item>
     </el-form> -->
-    <div id="cps" style="width:680px; height:250px;" v-loading="listLoading">
+    <div id="rpr" style="width:680px; height:250px;" v-loading="listLoading">
     </div>
   </div>
 </template>
@@ -21,10 +21,10 @@
 <script>
 import echarts from 'echarts'
 import { mapGetters } from 'vuex'
-import { successRateChannelPay } from '@/api/service'
+import { successRateResPay } from '@/api/service'
 import { parseTime } from '@/utils/index'
 export default {
-    name: 'MerchantSucc',
+    name: 'ResPaySucc',
     data() {
         return {
             xAxisData: [],
@@ -56,7 +56,7 @@ export default {
             this.listLoading = true
             this.queryParams.day__gte = parseTime(new Date(this.queryParams.day__gte).getTime(), '{y}-{m}-{d}')+' 00:00:00'
             this.queryParams.day__lte = parseTime(new Date(this.queryParams.day__lte).getTime(), '{y}-{m}-{d}')+' 23:59:59'
-            successRateChannelPay(this.queryParams).then(response => {
+            successRateResPay(this.queryParams).then(response => {
                 this.seriesData = []
                 this.legendData = [];
                 this.xAxisData = response.data.xAxisData.map(e => e+':00:00');
@@ -64,9 +64,9 @@ export default {
                 for (var name in response.data.yAxisData) {
                   var seriesName = "";
                   for (var nameItem of response.data.yAxisData[''+name]) {
-                    if (nameItem.merchant_name) {
-                      this.legendData.push(nameItem.merchant_name)
-                      seriesName = nameItem.merchant_name;
+                    if (nameItem.res_name) {
+                      this.legendData.push(nameItem.res_name)
+                      seriesName = nameItem.res_name;
                       break;
                     }
                   }
@@ -85,7 +85,7 @@ export default {
             })
         },
         intiChart(){
-          this.chart = echarts.init(document.getElementById('cps'))
+          this.chart = echarts.init(document.getElementById('rpr'))
           const option = {
             tooltip: {
               trigger: 'axis',
@@ -116,7 +116,7 @@ export default {
               containLabel: true
             },
             title: {
-              text: '商户充值成功率',
+              text: '耗材充值成功率',
               left: 'center',
               textStyle: {
                 color: '#ccc'

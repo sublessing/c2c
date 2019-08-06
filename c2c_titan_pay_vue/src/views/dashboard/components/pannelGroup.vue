@@ -10,79 +10,154 @@
         </el-tabs>
       </el-row>
       <el-row>
-        <el-col :span="12">
-          <!-- <el-card> -->
+        <el-col :span="6">
+            <h3>总充值订单</h3>
             <div class="text">
               <el-row class="item">
-                充值订单总数量：{{newestData.order_recharge_num}} |&nbsp;&nbsp;
-                  {{oldData.order_recharge_num}}&nbsp;&nbsp;
-                <span :class="{asc: newestData.order_recharge_num > oldData.order_recharge_num,desc: newestData.order_recharge_num <= oldData.order_recharge_num }">
-                  {{((oldData.order_recharge_num == 0 && newestData.order_recharge_num != 0) ? 1 : ((newestData.order_recharge_num - oldData.order_recharge_num)) / oldData.order_recharge_num) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_recharge_num > oldData.order_recharge_num ? '↑': '↓'"></span>
+                总数量：{{newestData.order_num}} |&nbsp;&nbsp;
+                  {{oldData.order_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.order_num > oldData.order_num,desc: newestData.order_num <= oldData.order_num }">
+                  {{((oldData.order_num == 0 && newestData.order_num != 0) ? 1 : ((newestData.order_num - oldData.order_num) / oldData.order_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.order_num > oldData.order_num ? '↑': '↓'"></span>
                 </span>
               </el-row>
-
               <el-row class="item">
-                充值订单完成数量：{{newestData.order_recharge_succ_num}} |&nbsp;&nbsp;
-                  {{oldData.order_recharge_succ_num}}&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_recharge_succ_num > oldData.order_recharge_succ_num, desc: newestData.order_recharge_succ_num <= oldData.order_recharge_succ_num}'>
-                  {{((oldData.order_recharge_succ_num == 0 && newestData.order_recharge_succ_num != 0) ? 1 : ((newestData.order_recharge_succ_num - oldData.order_recharge_succ_num)) / oldData.order_recharge_succ_num) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_recharge_succ_num > oldData.order_recharge_succ_num ? '↑': '↓'"></span>
+                完成数量：{{newestData.order_succ_num}} |&nbsp;&nbsp;
+                  {{oldData.order_succ_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.order_succ_num > oldData.order_succ_num,desc: newestData.order_succ_num <= oldData.order_succ_num }">
+                  {{((oldData.order_succ_num == 0 && newestData.order_succ_num != 0) ? 1 : ((newestData.order_succ_num - oldData.order_succ_num) / oldData.order_succ_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.order_succ_num > oldData.order_succ_num ? '↑': '↓'"></span>
                 </span>
               </el-row>
-
               <el-row class="item">
-                充值订单总金额：{{$priceFormat((newestData.order_recharge_money?newestData.order_recharge_money:0).toFixed(2))}} |&nbsp;&nbsp;
-                  {{$priceFormat((oldData.order_recharge_money?oldData.order_recharge_money:0).toFixed(2))}}&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_recharge_money > oldData.order_recharge_money, desc: newestData.order_recharge_money <= oldData.order_recharge_money}'>
-                  {{((oldData.order_recharge_money == 0 && newestData.order_recharge_money != 0) ? 1 : ((newestData.order_recharge_money - oldData.order_recharge_money)) / oldData.order_recharge_money) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_recharge_money > oldData.order_recharge_money ? '↑': '↓'"></span>
+                总金额：{{$priceFormat((newestData.order_money?newestData.order_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.order_money?oldData.order_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.order_money > oldData.order_money,desc: newestData.order_money <= oldData.order_money }">
+                  {{((oldData.order_money == 0 && newestData.order_money != 0) ? 1 : ((newestData.order_money - oldData.order_money) / oldData.order_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.order_money > oldData.order_money ? '↑': '↓'"></span>
                 </span>
               </el-row>
-
               <el-row class="item">
-                充值订单完成金额：{{$priceFormat((newestData.order_recharge_succ_money?newestData.order_recharge_succ_money:0).toFixed(2))}} |&nbsp;&nbsp;
-                  {{$priceFormat((oldData.order_recharge_succ_money?oldData.order_recharge_succ_money:0).toFixed(2))}}&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_recharge_succ_money > oldData.order_recharge_succ_money, desc: newestData.order_recharge_succ_money <= oldData.order_recharge_succ_money}'>
-                  {{((oldData.order_recharge_succ_money == 0 && newestData.order_recharge_succ_money != 0) ? 1 : ((newestData.order_recharge_succ_money - oldData.order_recharge_succ_money)) / oldData.order_recharge_succ_money) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_recharge_succ_money > oldData.order_recharge_succ_money ? '↑': '↓'"></span>
+                完成金额：{{$priceFormat((newestData.order_succ_money?newestData.order_succ_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.order_succ_money?oldData.order_succ_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.order_succ_money > oldData.order_succ_money,desc: newestData.order_succ_money <= oldData.order_succ_money }">
+                  {{((oldData.order_succ_money == 0 && newestData.order_succ_money != 0) ? 1 : ((newestData.order_succ_money - oldData.order_succ_money) / oldData.order_succ_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.order_succ_money > oldData.order_succ_money ? '↑': '↓'"></span>
                 </span>
               </el-row>
             </div>
-          <!-- </el-card> -->
         </el-col>
-        <!-- <el-col :span="12">
-          <el-card  >
+        <el-col :span="6">
+            <h3>银联</h3>
             <div class="text">
               <el-row class="item">
-                转账订单总数量：{{newestData.order_draw_num}} |&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_draw_num > oldData.order_draw_num, desc: newestData.order_draw_num <= oldData.order_draw_num}'>
-                  {{newestData.order_draw_num - oldData.order_draw_num}}&nbsp;&nbsp;
-                  {{((newestData.order_draw_num - oldData.order_draw_num) / oldData.order_draw_num) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_draw_num > oldData.order_draw_num ? '↑': '↓'"></span>
+                总数量：{{newestData.union_order_num}} |&nbsp;&nbsp;
+                  {{oldData.union_order_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.union_order_num > oldData.union_order_num,desc: newestData.union_order_num <= oldData.union_order_num }">
+                  {{((oldData.union_order_num == 0 && newestData.union_order_num != 0) ? 1 : ((newestData.union_order_num - oldData.union_order_num) / oldData.union_order_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.union_order_num > oldData.union_order_num ? '↑': '↓'"></span>
                 </span>
               </el-row>
-
               <el-row class="item">
-                转账订单完成数量：{{newestData.order_draw_succ_num}} |&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_draw_succ_num > oldData.order_draw_succ_num, desc: newestData.order_draw_succ_num <= oldData.order_draw_succ_num}'>
-                  {{newestData.order_draw_succ_num - oldData.order_draw_succ_num}}&nbsp;&nbsp;
-                  {{((newestData.order_draw_succ_num - oldData.order_draw_succ_num) / oldData.order_draw_succ_num) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_draw_succ_num > oldData.order_draw_succ_num ? '↑': '↓'"></span>
+                完成数量：{{newestData.union_succ_num}} |&nbsp;&nbsp;
+                  {{oldData.union_succ_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.union_succ_num > oldData.union_succ_num,desc: newestData.union_succ_num <= oldData.union_succ_num }">
+                  {{((oldData.union_succ_num == 0 && newestData.union_succ_num != 0) ? 1 : ((newestData.union_succ_num - oldData.union_succ_num) / oldData.union_succ_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.union_succ_num > oldData.union_succ_num ? '↑': '↓'"></span>
                 </span>
               </el-row>
-
               <el-row class="item">
-                转账订单完成金额：{{newestData.order_draw_succ_money}} |&nbsp;&nbsp;
-                <span :class='{asc: newestData.order_draw_succ_money > oldData.order_draw_succ_money, desc: newestData.order_draw_succ_money <= oldData.order_draw_succ_money}'>
-                  {{(newestData.order_draw_succ_money - oldData.order_draw_succ_money)}}&nbsp;&nbsp;
-                  {{((newestData.order_draw_succ_money - oldData.order_draw_succ_money) / oldData.order_draw_succ_money) | toPercentFilter}} &nbsp;&nbsp;
-                  <span v-text="newestData.order_draw_succ_money > oldData.order_draw_succ_money? '↑': '↓'"></span>
+                总金额：{{$priceFormat((newestData.union_order_money?newestData.union_order_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.union_order_money?oldData.union_order_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.union_order_money > oldData.union_order_money,desc: newestData.union_order_money <= oldData.union_order_money }">
+                  {{((oldData.union_order_money == 0 && newestData.union_order_money != 0) ? 1 : ((newestData.union_order_money - oldData.union_order_money) / oldData.union_order_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.union_order_money > oldData.union_order_money ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                完成金额：{{$priceFormat((newestData.union_succ_money?newestData.union_succ_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.union_succ_money?oldData.union_succ_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.union_succ_money > oldData.union_succ_money,desc: newestData.union_succ_money <= oldData.union_succ_money }">
+                  {{((oldData.union_succ_money == 0 && newestData.union_succ_money != 0) ? 1 : ((newestData.union_succ_money - oldData.union_succ_money) / oldData.union_succ_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.union_succ_money > oldData.union_succ_money ? '↑': '↓'"></span>
                 </span>
               </el-row>
             </div>
-          </el-card>
-        </el-col> -->
+        </el-col>
+        <el-col :span="6">
+            <h3>支付宝</h3>
+            <div class="text">
+              <el-row class="item">
+                总数量：{{newestData.alipay_order_num}} |&nbsp;&nbsp;
+                  {{oldData.alipay_order_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.alipay_order_num > oldData.alipay_order_num,desc: newestData.alipay_order_num <= oldData.alipay_order_num }">
+                  {{((oldData.alipay_order_num == 0 && newestData.alipay_order_num != 0) ? 1 : ((newestData.alipay_order_num - oldData.alipay_order_num) / oldData.alipay_order_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.alipay_order_num > oldData.alipay_order_num ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                完成数量：{{newestData.alipay_succ_num}} |&nbsp;&nbsp;
+                  {{oldData.alipay_succ_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.alipay_succ_num > oldData.alipay_succ_num,desc: newestData.alipay_succ_num <= oldData.alipay_succ_num }">
+                  {{((oldData.alipay_succ_num == 0 && newestData.alipay_succ_num != 0) ? 1 : ((newestData.alipay_succ_num - oldData.alipay_succ_num) / oldData.alipay_succ_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.alipay_succ_num > oldData.alipay_succ_num ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                总金额：{{$priceFormat((newestData.alipay_order_money?newestData.alipay_order_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.alipay_order_money?oldData.alipay_order_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.alipay_order_money > oldData.alipay_order_money,desc: newestData.alipay_order_money <= oldData.alipay_order_money }">
+                  {{((oldData.alipay_order_money == 0 && newestData.alipay_order_money != 0) ? 1 : ((newestData.alipay_order_money - oldData.alipay_order_money) / oldData.alipay_order_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.alipay_order_money > oldData.alipay_order_money ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                完成金额：{{$priceFormat((newestData.alipay_succ_money?newestData.alipay_succ_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.alipay_succ_money?oldData.alipay_succ_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.alipay_succ_money > oldData.alipay_succ_money,desc: newestData.alipay_succ_money <= oldData.alipay_succ_money }">
+                  {{((oldData.alipay_succ_money == 0 && newestData.alipay_succ_money != 0) ? 1 : ((newestData.alipay_succ_money - oldData.alipay_succ_money) / oldData.alipay_succ_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.alipay_succ_money > oldData.alipay_succ_money ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+            </div>
+        </el-col>
+        <el-col :span="6">
+            <h3>微信</h3>
+            <div class="text">
+              <el-row class="item">
+                总数量：{{newestData.wx_order_num}} |&nbsp;&nbsp;
+                  {{oldData.wx_order_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.wx_order_num > oldData.wx_order_num,desc: newestData.wx_order_num <= oldData.wx_order_num }">
+                  {{((oldData.wx_order_num == 0 && newestData.wx_order_num != 0) ? 1 : ((newestData.wx_order_num - oldData.wx_order_num) / oldData.wx_order_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.wx_order_num > oldData.wx_order_num ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                完成数量：{{newestData.wx_succ_num}} |&nbsp;&nbsp;
+                  {{oldData.wx_succ_num}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.wx_succ_num > oldData.wx_succ_num,desc: newestData.wx_succ_num <= oldData.wx_succ_num }">
+                  {{((oldData.wx_succ_num == 0 && newestData.wx_succ_num != 0) ? 1 : ((newestData.wx_succ_num - oldData.wx_succ_num) / oldData.wx_succ_num)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.wx_succ_num > oldData.wx_succ_num ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                总金额：{{$priceFormat((newestData.wx_order_money?newestData.wx_order_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.wx_order_money?oldData.wx_order_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.wx_order_money > oldData.wx_order_money,desc: newestData.wx_order_money <= oldData.wx_order_money }">
+                  {{((oldData.wx_order_money == 0 && newestData.wx_order_money != 0) ? 1 : ((newestData.wx_order_money - oldData.wx_order_money) / oldData.wx_order_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.wx_order_money > oldData.wx_order_money ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+              <el-row class="item">
+                完成金额：{{$priceFormat((newestData.wx_succ_money?newestData.wx_succ_money:0).toFixed(2))}} |&nbsp;&nbsp;
+                  {{$priceFormat((oldData.wx_succ_money?oldData.wx_succ_money:0).toFixed(2))}}&nbsp;&nbsp;
+                <span :class="{asc: newestData.wx_succ_money > oldData.wx_succ_money,desc: newestData.wx_succ_money <= oldData.wx_succ_money }">
+                  {{((oldData.wx_succ_money == 0 && newestData.wx_succ_money != 0) ? 1 : ((newestData.wx_succ_money - oldData.wx_succ_money) / oldData.wx_succ_money)) | toPercentFilter}} &nbsp;&nbsp;
+                  <span v-text="newestData.wx_succ_money > oldData.wx_succ_money ? '↑': '↓'"></span>
+                </span>
+              </el-row>
+            </div>
+        </el-col>
       </el-row>
     </el-card>
   </div>
@@ -142,22 +217,40 @@ export default {
         )
         var leng = response.data.items.length
         this.oldData = {
-          order_recharge_num: response.data.items[leng-1] ? response.data.items[leng-1].order_num : 0,
-          order_recharge_succ_num: response.data.items[leng-1] ? response.data.items[leng-1].order_succ_num : 0,
-          order_recharge_money: response.data.items[leng-1] ? response.data.items[leng-1].order_money : 0,
-          order_recharge_succ_money: response.data.items[1] ? response.data.items[leng-1].order_succ_money : 0,
-          order_draw_num: response.data.items[leng-1] ? response.data.items[leng-1].draw_count : 0,
-          order_draw_succ_num: response.data.items[leng-1] ? parseInt(response.data.items[leng-1].draw_success_rate*response.data.items[leng-1].draw_count) : 0,
-          order_draw_succ_money: response.data.items[leng-1] ? response.data.items[leng-1].draw_sum : 0,
+          order_num: response.data.items[leng-1] ? response.data.items[leng-1].order_num : 0,
+          order_succ_num: response.data.items[leng-1] ? response.data.items[leng-1].order_succ_num : 0,
+          order_money: response.data.items[leng-1] ? response.data.items[leng-1].order_money : 0,
+          order_succ_money: response.data.items[leng-1] ? response.data.items[leng-1].order_succ_money : 0,
+          union_order_num: response.data.items[leng-1] ? response.data.items[leng-1].union_order_num : 0,
+          union_succ_num: response.data.items[leng-1] ? response.data.items[leng-1].union_succ_num : 0,
+          union_order_money: response.data.items[leng-1] ? response.data.items[leng-1].union_order_money : 0,
+          union_succ_money: response.data.items[leng-1] ? response.data.items[leng-1].union_succ_money : 0,
+          alipay_order_num: response.data.items[leng-1] ? response.data.items[leng-1].alipay_order_num : 0,
+          alipay_succ_num: response.data.items[leng-1] ? response.data.items[leng-1].alipay_succ_num : 0,
+          alipay_order_money: response.data.items[leng-1] ? response.data.items[leng-1].alipay_order_money : 0,
+          alipay_succ_money: response.data.items[leng-1] ? response.data.items[leng-1].alipay_succ_money : 0,
+          wx_order_num: response.data.items[leng-1] ? response.data.items[leng-1].wx_order_num : 0,
+          wx_succ_num: response.data.items[leng-1] ? response.data.items[leng-1].wx_succ_num : 0,
+          wx_order_money: response.data.items[leng-1] ? response.data.items[leng-1].wx_order_money : 0,
+          wx_succ_money: response.data.items[leng-1] ? response.data.items[leng-1].wx_succ_money : 0,
         }
         this.newestData = {
-          order_recharge_num: response.data.items[0] ? response.data.items[0].order_num : 0,
-          order_recharge_succ_num: response.data.items[0] ? response.data.items[0].order_succ_num : 0,
-          order_recharge_money: response.data.items[0] ? response.data.items[0].order_money : 0,
-          order_recharge_succ_money: response.data.items[0] ? response.data.items[0].order_succ_money : 0,
-          order_draw_num: response.data.items[0] ? response.data.items[0].draw_count : 0,
-          order_draw_succ_num: response.data.items[0] ? parseInt(response.data.items[0].draw_success_rate*response.data.items[0].draw_count) : 0,
-          order_draw_succ_money: response.data.items[0] ? response.data.items[0].draw_sum : 0,
+          order_num: response.data.items[0] ? response.data.items[0].order_num : 0,
+          order_succ_num: response.data.items[0] ? response.data.items[0].order_succ_num : 0,
+          order_money: response.data.items[0] ? response.data.items[0].order_money : 0,
+          order_succ_money: response.data.items[0] ? response.data.items[0].order_succ_money : 0,
+          union_order_num: response.data.items[0] ? response.data.items[0].union_order_num : 0,
+          union_succ_num: response.data.items[0] ? response.data.items[0].union_succ_num : 0,
+          union_order_money: response.data.items[0] ? response.data.items[0].union_order_money : 0,
+          union_succ_money: response.data.items[0] ? response.data.items[0].union_succ_money : 0,
+          alipay_order_num: response.data.items[0] ? response.data.items[0].alipay_order_num : 0,
+          alipay_succ_num: response.data.items[0] ? response.data.items[0].alipay_succ_num : 0,
+          alipay_order_money: response.data.items[0] ? response.data.items[0].alipay_order_money : 0,
+          alipay_succ_money: response.data.items[0] ? response.data.items[0].alipay_succ_money : 0,
+          wx_order_num: response.data.items[0] ? response.data.items[0].wx_order_num : 0,
+          wx_succ_num: response.data.items[0] ? response.data.items[0].wx_succ_num : 0,
+          wx_order_money: response.data.items[0] ? response.data.items[0].wx_order_money : 0,
+          wx_succ_money: response.data.items[0] ? response.data.items[0].wx_succ_money : 0,
         }
         this.loading = false
       })

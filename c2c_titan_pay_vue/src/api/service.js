@@ -216,6 +216,15 @@ export function successRateChannelPay(params) {
   })
 }
 
+//  获取资源充值成功率
+export function successRateResPay(params) {
+  return request({
+    url: '/monitoring/res_pay/rate/',
+    method: 'get',
+    params: params
+  })
+}
+
 //  获取余额
 export function successRateChannelDraw(params) {
   return request({

@@ -36,6 +36,11 @@
         <el-col :span="12" v-if="urls.includes('/monitoring/pay/balance/')">
             <pay-balance ref="pay_balance_view" @connectChart="connectChart"></pay-balance>
         </el-col>
+
+        <!--4.资源充值成功率 -->
+        <el-col :span="12" v-if="urls.includes('/monitoring/res_pay/rate/')">
+            <res-pay-rate ref="res_pay_view" @connectChart="connectChart"></res-pay-rate>
+        </el-col>
       </el-row>
     </el-card>
   </div>
@@ -49,9 +54,10 @@ import echarts from 'echarts'
   import payMoney from '../../monitoring/components/pay_money'
   import payRate from '../../monitoring/components/pay_rate'
   import payBalance from '../../monitoring/components/pay_balance'
+  import resPayRate from '../../monitoring/components/res_pay_rate'
 
   export default {
-    components: { payNumber, payMoney, payRate, payBalance },
+    components: { payNumber, payMoney, payRate, payBalance, resPayRate },
     computed: {
       ...mapGetters([
         'roleIds',
@@ -76,6 +82,9 @@ import echarts from 'echarts'
         if (this.urls.includes('/monitoring/pay/balance/')) {
           this.$refs.pay_balance_view.fetchData();
         }
+        if (this.urls.includes('/monitoring/res_pay/rate/')) {
+          this.$refs.res_pay_view.fetchData();
+        }
       },
       connectChart () {
         setTimeout(() => {
@@ -91,6 +100,9 @@ import echarts from 'echarts'
             }
             if (this.urls.includes('/monitoring/pay/balance/')) {
               chartList.push(this.$refs.pay_balance_view.chart);
+            }
+            if (this.urls.includes('/monitoring/res_pay/rate/')) {
+              chartList.push(this.$refs.res_pay_view.chart);
             }
           echarts.connect(chartList);
         }, 500)

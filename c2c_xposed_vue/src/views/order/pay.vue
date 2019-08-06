@@ -72,7 +72,7 @@
             <el-form-item label="订单状态确认:">
               <span>{{ statusMap[props.row.status] }}</span>
               <el-button type="primary" size="mini" @click="handleCallbackBatch(props.row)" v-if="urls.includes('/order/pay/callback/') && props.row.callback_status !== 0 && props.row.status === 0">回调</el-button>
-              <el-button type="primary" size="mini" @click.native="handleSucc(props.row)" v-if="urls.includes('/order/pay/to_success/') && props.row.status === 1 && props.row.status === 3">手工确认</el-button>
+              <el-button type="primary" size="mini" @click.native="handleSucc(props.row)" v-if="urls.includes('/order/pay/to_success/') && (props.row.status === 1 || props.row.status === 3)">手工确认</el-button>
             </el-form-item>
             <el-form-item label="商户用户数据:">
               <span>{{ props.row.order_extra_data }}</span>
